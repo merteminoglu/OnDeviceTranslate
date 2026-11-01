@@ -9,6 +9,12 @@ A small native Mac window for translation between Dutch, English, and Turkish, u
   </picture>
 </p>
 
+## Works completely offline
+
+Translation runs entirely on your Mac. The app is sandboxed with **no network access at all** — it cannot connect to the internet even if it wanted to — so your text never leaves the machine. There are no accounts, no telemetry, no cloud fallback, and no saved history.
+
+The only step that needs a connection is the one-time download of language packs, which you do in System Settings, outside the app. After that, it works on a plane, offline, or with Wi‑Fi turned off.
+
 ## Requirements
 
 - macOS 26 or later.
