@@ -2,6 +2,13 @@
 
 A small native Mac window for translation between Dutch, English, and Turkish, using Apple's installed on-device models.
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.png">
+    <img src="docs/screenshot-light.png" width="560" alt="Translate window: Dutch text in the top pane, its English translation in the tinted lower pane, with a swap button between them">
+  </picture>
+</p>
+
 ## Requirements
 
 - macOS 26 or later.
