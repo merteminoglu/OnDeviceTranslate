@@ -4,7 +4,7 @@
 #
 # The bundle is assembled by hand rather than through an .xcodeproj: SwiftPM
 # produces the binary, codesign the signature. The icon is the checked-in
-# Resources/AppIcon.icns; Scripts/make-icon.sh regenerates it.
+# Resources/AppIcon.icns.
 #
 # The entitlements matter: they turn on the App Sandbox with no network
 # client/server access, which is what guarantees translation stays offline.

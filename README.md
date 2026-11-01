@@ -21,7 +21,6 @@ A small native Mac window for translation between Dutch, English, and Turkish, u
 Scripts/build.sh                  # release by default; CONFIG=debug to override
 Scripts/run.sh                    # build, quit the running copy, relaunch
 Scripts/install.sh                # build and swap into /Applications
-Scripts/make-icon.sh              # regenerate Resources/AppIcon.icns after changing the artwork
 ```
 
 The build creates an ad hoc signed development app in `build/Translate.app` (the whole `build/` folder is disposable). No dependencies are downloaded. Open `Package.swift` in Xcode to edit or debug the sources. For the sandboxed app, use the build script: running the Swift package executable directly from Xcode does not apply the bundle's sandbox entitlements.
