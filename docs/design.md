@@ -1,0 +1,11 @@
+# On-device Translate
+
+Approved direction: the Quiet design in `design/translate-refined.html`.
+
+A single native macOS window translates between Dutch, English, and Turkish in all six directions. The source and target labels are native language menus. Selecting the language currently used on the opposite side reverses the pair; identical source and target languages are never allowed. The source occupies the upper half; the softly tinted lower half presents selectable translated text. A central swap button, Clear, Translate (Command Return), and Copy translation are the primary actions. Use system typography, accessible controls, and automatic light/dark appearance. Start with empty text. Keep text in memory only.
+
+Use SwiftUI, AppKit for native window/editor integration, and Apple's Translation framework. Require macOS 26.0 so `TranslationSession(installedSource:target:)` guarantees the session cannot request language downloads. Check pair availability before translation. Missing packs produce an actionable setup screen with instructions for System Settings > General > Language & Region > Translation Languages, and a Check again button. Never download packs from the app. The packaged app uses App Sandbox with no network client/server entitlements, no third-party dependencies, and no telemetry.
+
+Keep service integration separate from observable UI state. Cancel obsolete requests; also use request identities to reject late results when source text, direction, or availability changes. Empty input cannot translate. Clear cancels work and empties both fields. Choosing a different source or target preserves input, cancels pending work, clears output, and checks the new pair’s installed packs. Language menus remain available in setup so another installed pair can be selected. Swap uses an existing valid translation as the new source, or preserves untranslated input and clears output. Translation failures preserve input and offer retry. Copy always copies only a current successful result.
+
+Deliver a Swift package that opens in Xcode, a reproducible app-bundle build script, a signed development `.app`, tests, and concise usage instructions. Verify compilation, behavioral tests, signature/entitlements, and native runtime as the environment permits. Report any installed-pack or UI-permission limits explicitly.
