@@ -15,6 +15,18 @@ Translation runs entirely on your Mac. The app is sandboxed with **no network ac
 
 The only step that needs a connection is the one-time download of language packs, which you do in System Settings, outside the app. After that, it works on a plane, offline, or with Wi‑Fi turned off.
 
+## Download
+
+Grab **Translate.zip** from the [latest release](https://github.com/merteminoglu/OnDeviceTranslate/releases/latest), unzip it and move `Translate.app` to `/Applications`. It's a universal build for Apple Silicon and Intel, and needs macOS 26 or later.
+
+Translate isn't notarized by Apple, so macOS blocks the first launch. To allow it, open **System Settings → Privacy & Security** and click **Open Anyway**. Or run:
+
+```sh
+xattr -dr com.apple.quarantine /Applications/Translate.app
+```
+
+Then install the language packs (see [Language packs](#language-packs)).
+
 ## Requirements
 
 - macOS 26 or later.
@@ -24,7 +36,7 @@ The only step that needs a connection is the one-time download of language packs
 ## Build and open
 
 ```sh
-Scripts/build.sh                  # release by default; CONFIG=debug to override
+Scripts/build.sh                  # release by default; CONFIG=debug to override, UNIVERSAL=1 for arm64 + x86_64
 Scripts/run.sh                    # build, quit the running copy, relaunch
 Scripts/install.sh                # build and swap into /Applications
 ```

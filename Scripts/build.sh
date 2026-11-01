@@ -17,9 +17,16 @@ APP="$ROOT/build/Translate.app"
 
 cd "$ROOT"
 
-echo "==> Compiling ($CONFIG)"
-swift build -c "$CONFIG"
-BIN="$(swift build -c "$CONFIG" --show-bin-path)/OnDeviceTranslate"
+# UNIVERSAL=1 builds for Apple Silicon and Intel in one binary (for releases).
+ARCH_FLAGS=()
+if [ "${UNIVERSAL:-0}" = "1" ]; then
+  ARCH_FLAGS=(--arch arm64 --arch x86_64)
+fi
+
+[ "${UNIVERSAL:-0}" = "1" ] && LABEL=", universal" || LABEL=""
+echo "==> Compiling ($CONFIG$LABEL)"
+swift build -c "$CONFIG" ${ARCH_FLAGS[@]+"${ARCH_FLAGS[@]}"}
+BIN="$(swift build -c "$CONFIG" ${ARCH_FLAGS[@]+"${ARCH_FLAGS[@]}"} --show-bin-path)/OnDeviceTranslate"
 
 echo "==> Assembling bundle"
 rm -rf "$APP"
